@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">2 min read</span>
+    <span class="article-duration">3 min read</span>
     
 
     <h1 class="article-title"></h1>
@@ -159,6 +159,30 @@ oh &lt;- c(&quot;Rushing&quot;=147, &quot;Passing&quot;=194, &quot;First Downs&q
         )
 )</code></pre>
 <p><img src="http://mattwaite.github.io/1/01/01/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>al &lt;- c(&quot;Total Wins&quot;=169, &quot;Conference Titles&quot;=7, &quot;National Championships&quot;=6)
+oh &lt;- c(&quot;Total Wins&quot;=134, &quot;Conference Titles&quot;=8, &quot;National Championships&quot;=1)
+cl &lt;- c(&quot;Total Wins&quot;=152, &quot;Conference Titles&quot;=7, &quot;National Championships&quot;=2)</code></pre>
+<pre class="r"><code>iron(
+ waffle(al, 
+        rows = 10, 
+        title=&quot;Alabama&#39;s Offense&quot;, 
+        xlab=&quot;1 square = 1 yard/first down&quot;, 
+        colors = c(&quot;black&quot;, &quot;red&quot;, &quot;grey&quot;)
+        ),
+ waffle(oh, 
+        rows = 10, 
+        title=&quot;Ohio State&#39;s Offense&quot;, 
+        xlab=&quot;1 square = 1 yard/first down&quot;, 
+        colors = c(&quot;black&quot;, &quot;red&quot;, &quot;grey&quot;)
+        ),
+  waffle(oh, 
+        rows = 10, 
+        title=&quot;Ohio State&#39;s Offense&quot;, 
+        xlab=&quot;1 square = 1 yard/first down&quot;, 
+        colors = c(&quot;black&quot;, &quot;red&quot;, &quot;grey&quot;)
+        )
+)</code></pre>
+<p><img src="http://mattwaite.github.io/1/01/01/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 
     </div>
   </article>
