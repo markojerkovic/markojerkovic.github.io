@@ -6,8 +6,8 @@
 <meta name="generator" content="Hugo 0.81.0" />
 
 
-<title>Alabama&#39;s Football Dominance - Marko Jerkovic&#39;s Gitbub Site</title>
-<meta property="og:title" content="Alabama&#39;s Football Dominance - Marko Jerkovic&#39;s Gitbub Site">
+<title>How Dominant Has Alabama Football Been In the Nick Saban Era? - Marko Jerkovic&#39;s Gitbub Site</title>
+<meta property="og:title" content="How Dominant Has Alabama Football Been In the Nick Saban Era? - Marko Jerkovic&#39;s Gitbub Site">
 
 
   <link href='http://markojerkovic.github.io/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -62,10 +62,10 @@
 
   <article class="article">
     
-    <span class="article-duration">4 min read</span>
+    <span class="article-duration">6 min read</span>
     
 
-    <h1 class="article-title">Alabama&#39;s Football Dominance</h1>
+    <h1 class="article-title">How Dominant Has Alabama Football Been In the Nick Saban Era?</h1>
 
     
     <span class="article-date">2021-04-04</span>
@@ -78,7 +78,7 @@
 <p>The key to prolonged success is adaptability.</p>
 <p>Nick Saban is the greatest college football coach of all time. His Alabama Crimson Tide teams of the last 15 seasons have been some of the greatest of all time, both in their consistency and dominance.</p>
 <p>They haven’t always won the same way. Through the many eras of Nick Saban’s tenure his teams have looked and played drastically different.</p>
-<p>Nick Saban has and always will be a defensive coach and therefore his teams at Alabama for the first decade were dominant defensive and offensively focused on running the ball.</p>
+<p>Nick Saban has and always will be a defensive coach and therefore his teams at Alabama for the first decade were dominant defensive and offensively focused on running the ball and not making mistakes.</p>
 <p>First we can look at this chart and see how Nick Saban’s offenses have performed historically.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
@@ -102,17 +102,9 @@ library(scales)</code></pre>
 <pre><code>## The following object is masked from &#39;package:readr&#39;:
 ## 
 ##     col_factor</code></pre>
+<pre class="r"><code>library(ggbump)</code></pre>
+<pre><code>## Warning: package &#39;ggbump&#39; was built under R version 4.0.4</code></pre>
 <pre class="r"><code>alabama &lt;- read.csv(&quot;data/alabamafootball.csv&quot;)</code></pre>
-<pre class="r"><code>glimpse(alabama)</code></pre>
-<pre><code>## Rows: 14
-## Columns: 5
-## $ Year    &lt;int&gt; 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011,...
-## $ OffRank &lt;int&gt; 2, 2, 3, 15, 16, 30, 16, 17, 12, 20, 18, 22, 35, 65
-## $ PPG     &lt;dbl&gt; 48.5, 47.2, 45.6, 37.1, 38.8, 35.1, 36.9, 38.2, 38.7, 34.8,...
-## $ DefRank &lt;int&gt; 13, 13, 12, 1, 1, 3, 6, 4, 1, 1, 3, 2, 7, 28
-## $ OppPPG  &lt;dbl&gt; 19.4, 18.6, 18.1, 11.9, 13.0, 15.1, 18.4, 13.9, 10.9, 8.2, ...</code></pre>
-<pre class="r"><code>names(alabama)</code></pre>
-<pre><code>## [1] &quot;Year&quot;    &quot;OffRank&quot; &quot;PPG&quot;     &quot;DefRank&quot; &quot;OppPPG&quot;</code></pre>
 <pre class="r"><code>ggplot() + 
   geom_point(
     data=alabama, 
@@ -125,7 +117,9 @@ labs(title=&quot;Alabama&#39;s Offense Under Nick Saban&quot;, subtitle=&quot;Th
     plot.subtitle = element_text(size=10), 
     panel.grid.minor = element_blank()
     )</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>As we can see, the offense was consistently above average in the nation in the first ten seasons, but over the last three years, since winning the 2017 National Championship, they’ve become elite.</p>
+<p>Now let’s take a look at how Saban’s defenses have fared over the same stretch.</p>
 <pre class="r"><code>ggplot() + 
   geom_point(
     data=alabama, 
@@ -138,19 +132,22 @@ labs(title=&quot;Alabama&#39;s Defense Under Nick Saban&quot;, subtitle=&quot;It
     plot.subtitle = element_text(size=10), 
     panel.grid.minor = element_blank()
     )</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>As we can see, Saban’s defenses quickly became among the best in the nation and did not exit the top 10 again until the 2018 season, just as the offensive improvement began to take shape.</p>
+<p>To show even more context to how dominant Alabama has been we can also look at their final position in the AP Poll every year since 2008.</p>
 <pre class="r"><code>finalrankings &lt;- read.csv(&quot;data/finalrankings.csv&quot;)</code></pre>
-<pre class="r"><code>glimpse(finalrankings)</code></pre>
-<pre><code>## Rows: 13
-## Columns: 2
-## $ Year          &lt;int&gt; 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012,...
-## $ Final.Ranking &lt;int&gt; 1, 8, 2, 1, 2, 1, 4, 7, 1, 1, 10, 1, 6</code></pre>
-<pre class="r"><code>names(finalrankings)</code></pre>
-<pre><code>## [1] &quot;Year&quot;          &quot;Final.Ranking&quot;</code></pre>
-<pre class="r"><code>ggplot() + 
-  geom_line(data=finalrankings, aes(x=Year, y=Final.Ranking)) + 
-  scale_y_continuous(limits = c(1, 10))</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code>ggplot() + geom_bump(data=finalrankings, aes(x=Year, y=Final.Ranking, color=&quot;Alabama&quot;)) +
+ geom_point(data=finalrankings, aes(x=Year, y=Final.Ranking, color=&quot;Alabama&quot;), size = 4) +  
+scale_y_reverse() +
+labs(title=&quot;End of Season AP Poll Position For Alabama&quot;, subtitle=&quot;Alabama has been unbelievably consistent during the Nick Saban era&quot;, y= &quot;Final Ranking&quot;, x = &quot;Year&quot;, caption=&quot;Source: NCAA | By Marko Jerkovic&quot;) +
+  theme_minimal() +
+  theme(
+    legend.position = &quot;none&quot;,
+    panel.grid.major = element_blank()
+    ) </code></pre>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>As we can see, despite the recent shift from defensive dominance to offensive dominance, the team has remained steady in their success. Alabama has finished the season in the AP Poll Top 10 every season of the Saban era, with the lone exception of 2007, Saban’s first year in Tuscaloosa.</p>
+<p>Now let’s take a look at a smaller and more specific example of Alabama’s shift in philosophy, while maintaining success. For this we will look at Alabama’s first and most recent national championship games, against Texas and Ohio State respectively.</p>
 <pre class="r"><code>al &lt;- c(&quot;Rushing&quot;=205, &quot;Passing&quot;=58, &quot;First Downs&quot;=16)
 tx &lt;- c(&quot;Rushing&quot;=81, &quot;Passing&quot;=195, &quot;First Downs&quot;=15)</code></pre>
 <pre class="r"><code>iron(
@@ -167,7 +164,7 @@ tx &lt;- c(&quot;Rushing&quot;=81, &quot;Passing&quot;=195, &quot;First Downs&qu
         colors = c(&quot;black&quot;, &quot;orange&quot;, &quot;grey&quot;)
         )
 )</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <pre class="r"><code>al &lt;- c(&quot;Rushing&quot;=157, &quot;Passing&quot;=464, &quot;First Downs&quot;=33)
 oh &lt;- c(&quot;Rushing&quot;=147, &quot;Passing&quot;=194, &quot;First Downs&quot;=19)</code></pre>
 <pre class="r"><code>iron(
@@ -184,7 +181,12 @@ oh &lt;- c(&quot;Rushing&quot;=147, &quot;Passing&quot;=194, &quot;First Downs&q
         colors = c(&quot;black&quot;, &quot;red&quot;, &quot;grey&quot;)
         )
 )</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>In 2009, the Crimson Tide’s defense and rushing attack trampled the Longhorns in a performance which included forcing five turnovers and four rushing touchdowns, while Greg McElroy floundered with just six completions and 58 passing yards.</p>
+<p>In 2020, Mac Jones and DeVonta Smith torched the Buckeyes, connecting for 215 yards and three touchdowns. Jones threw over 400 more passing yards than McElroy did in 2009, while also throwing five passing touchdowns.</p>
+<p>The most outstanding part for the Crimson Tide was the fact that they still had a strong defensive game and had a comparable rushing attack to that of the Buckeyes.</p>
+<p>This example shows that while Alabama has drastically improved their passing attack, they have remained well above average in their rushing game and on the defensive side of the ball as well.</p>
+<p>Next, we can go back to looking at the big picture, this time with other elite college football programs to compare to Alabama. First, we’ll look at these teams’ total wins since Nick Saban was hired at Alabama in 2007.</p>
 <pre class="r"><code>elite &lt;- read_csv(&quot;data/elitecfbteams.csv&quot;)</code></pre>
 <pre><code>## 
 ## -- Column specification --------------------------------------------------------
@@ -195,36 +197,31 @@ oh &lt;- c(&quot;Rushing&quot;=147, &quot;Passing&quot;=194, &quot;First Downs&q
 ##   `National Championships` = col_double(),
 ##   `Heisman Trophy Finalists` = col_double()
 ## )</code></pre>
-<pre class="r"><code>glimpse(elite)</code></pre>
-<pre><code>## Rows: 5
-## Columns: 5
-## $ Team                       &lt;chr&gt; &quot;Alabama&quot;, &quot;Clemson&quot;, &quot;Ohio State&quot;, &quot;Okl...
-## $ `Total Wins`               &lt;dbl&gt; 169, 152, 134, 149, 137
-## $ `Conference Titles`        &lt;dbl&gt; 7, 7, 8, 7, 3
-## $ `National Championships`   &lt;dbl&gt; 6, 2, 1, 0, 2
-## $ `Heisman Trophy Finalists` &lt;dbl&gt; 8, 3, 3, 6, 2</code></pre>
-<pre class="r"><code>names(elite)</code></pre>
-<pre><code>## [1] &quot;Team&quot;                     &quot;Total Wins&quot;              
-## [3] &quot;Conference Titles&quot;        &quot;National Championships&quot;  
-## [5] &quot;Heisman Trophy Finalists&quot;</code></pre>
 <pre class="r"><code>ggplot() + 
   geom_bar(data=elite, aes(x=reorder(Team, - `Total Wins`), weight=`Total Wins`)) + 
   scale_y_continuous(labels=comma, expand = c(0,0)) + 
   labs(
     title=&quot;Elite College Football Teams With Most Wins Since 2007&quot;, 
     x=&quot;School&quot;, 
-    y=&quot;Total Wins&quot;) +
+    y=&quot;Total Wins&quot;,
+    caption=&quot;Source: NCAA | By Marko Jerkovic&quot;) +
   theme_minimal()</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>As we can see, with 169 total wins since 2007, Alabama is far ahead of the pack, with Clemson the next closest at 152 total wins over the same span.</p>
+<p>Lastly, we’ll look at the most impressive stat of the Nick Saban era at Alabama, national championships.</p>
 <pre class="r"><code>ggplot() + 
   geom_bar(data=elite, aes(x=reorder(Team, - `National Championships`), weight=`National Championships`)) + 
   scale_y_continuous(labels=comma, expand = c(0,0)) + 
   labs(
     title=&quot;College Football Teams With Most National Championships Since 2007&quot;, 
     x=&quot;School&quot;, 
-    y=&quot;Total Wins&quot;) +
+    y=&quot;Total Wins&quot;, 
+    caption=&quot;Source: NCAA | By Marko Jerkovic&quot;) +
   theme_minimal()</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Impressively, Alabama has more national championships than Clemson, LSU, Ohio State and Oklahoma combined since 2007. Nick Saban has clearly outcoached and outclassed all of his contemporaries during his time at Alabama.</p>
+<p>Nick Saban’s tenure at Alabama has been the most dominant of this era of college football and is one of the dominant runs of all time.</p>
+<p>One last interesting piece of information, Nick Saban is only 70 years old and has said that he hopes to coach as long as he can. For the rest of college football, that’s the scariest stat of all.</p>
 
     </div>
   </article>
@@ -261,9 +258,6 @@ oh &lt;- c(&quot;Rushing&quot;=147, &quot;Passing&quot;=194, &quot;First Downs&q
 
 
     
-<script src="/js/math-code.js"></script>
-<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 
     
   </body>
