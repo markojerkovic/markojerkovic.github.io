@@ -13,7 +13,10 @@
       <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/</guid>
-      <description>library(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.0.5 v dplyr 1.0.3## v tidyr 1.1.2 v stringr 1.4.0## v readr 1.4.0 v forcats 0.5.0## -- Conflicts ------------------------------------------ tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()library(ggrepel)## Warning: package &amp;#39;ggrepel&amp;#39; was built under R version 4.0.4library(waffle)library(ggplot2)alabama &amp;lt;- read.csv(&amp;quot;data/alabamafootball.csv&amp;quot;)glimpse(alabama)## Rows: 14## Columns: 5## $ Year &amp;lt;int&amp;gt; 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011,.</description>
+      <description>The key to prolonged success is adaptability.
+Nick Saban is the greatest college football coach of all time. His Alabama Crimson Tide teams of the last 15 seasons have been some of the greatest of all time, both in their consistency and dominance.
+They haven’t always won the same way. Through the many eras of Nick Saban’s tenure his teams have looked and played drastically different.
+Nick Saban has and always will be a defensive coach and therefore his teams at Alabama for the first decade were dominant defensive and offensively focused on running the ball.</description>
     </item>
     
   </channel>

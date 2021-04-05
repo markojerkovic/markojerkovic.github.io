@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">3 min read</span>
+    <span class="article-duration">4 min read</span>
     
 
     <h1 class="article-title">Alabama&#39;s Football Dominance</h1>
@@ -75,6 +75,11 @@
       
 
 
+<p>The key to prolonged success is adaptability.</p>
+<p>Nick Saban is the greatest college football coach of all time. His Alabama Crimson Tide teams of the last 15 seasons have been some of the greatest of all time, both in their consistency and dominance.</p>
+<p>They haven’t always won the same way. Through the many eras of Nick Saban’s tenure his teams have looked and played drastically different.</p>
+<p>Nick Saban has and always will be a defensive coach and therefore his teams at Alabama for the first decade were dominant defensive and offensively focused on running the ball.</p>
+<p>First we can look at this chart and see how Nick Saban’s offenses have performed historically.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
 <pre><code>## v ggplot2 3.3.3     v purrr   0.3.4
@@ -87,7 +92,16 @@
 <pre class="r"><code>library(ggrepel)</code></pre>
 <pre><code>## Warning: package &#39;ggrepel&#39; was built under R version 4.0.4</code></pre>
 <pre class="r"><code>library(waffle)
-library(ggplot2)</code></pre>
+library(ggplot2)
+library(scales)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
 <pre class="r"><code>alabama &lt;- read.csv(&quot;data/alabamafootball.csv&quot;)</code></pre>
 <pre class="r"><code>glimpse(alabama)</code></pre>
 <pre><code>## Rows: 14
@@ -111,7 +125,7 @@ labs(title=&quot;Alabama&#39;s Offense Under Nick Saban&quot;, subtitle=&quot;Th
     plot.subtitle = element_text(size=10), 
     panel.grid.minor = element_blank()
     )</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre class="r"><code>ggplot() + 
   geom_point(
     data=alabama, 
@@ -124,7 +138,19 @@ labs(title=&quot;Alabama&#39;s Defense Under Nick Saban&quot;, subtitle=&quot;It
     plot.subtitle = element_text(size=10), 
     panel.grid.minor = element_blank()
     )</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>finalrankings &lt;- read.csv(&quot;data/finalrankings.csv&quot;)</code></pre>
+<pre class="r"><code>glimpse(finalrankings)</code></pre>
+<pre><code>## Rows: 13
+## Columns: 2
+## $ Year          &lt;int&gt; 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012,...
+## $ Final.Ranking &lt;int&gt; 1, 8, 2, 1, 2, 1, 4, 7, 1, 1, 10, 1, 6</code></pre>
+<pre class="r"><code>names(finalrankings)</code></pre>
+<pre><code>## [1] &quot;Year&quot;          &quot;Final.Ranking&quot;</code></pre>
+<pre class="r"><code>ggplot() + 
+  geom_line(data=finalrankings, aes(x=Year, y=Final.Ranking)) + 
+  scale_y_continuous(limits = c(1, 10))</code></pre>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <pre class="r"><code>al &lt;- c(&quot;Rushing&quot;=205, &quot;Passing&quot;=58, &quot;First Downs&quot;=16)
 tx &lt;- c(&quot;Rushing&quot;=81, &quot;Passing&quot;=195, &quot;First Downs&quot;=15)</code></pre>
 <pre class="r"><code>iron(
@@ -141,7 +167,7 @@ tx &lt;- c(&quot;Rushing&quot;=81, &quot;Passing&quot;=195, &quot;First Downs&qu
         colors = c(&quot;black&quot;, &quot;orange&quot;, &quot;grey&quot;)
         )
 )</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <pre class="r"><code>al &lt;- c(&quot;Rushing&quot;=157, &quot;Passing&quot;=464, &quot;First Downs&quot;=33)
 oh &lt;- c(&quot;Rushing&quot;=147, &quot;Passing&quot;=194, &quot;First Downs&quot;=19)</code></pre>
 <pre class="r"><code>iron(
@@ -158,83 +184,47 @@ oh &lt;- c(&quot;Rushing&quot;=147, &quot;Passing&quot;=194, &quot;First Downs&q
         colors = c(&quot;black&quot;, &quot;red&quot;, &quot;grey&quot;)
         )
 )</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<pre class="r"><code>al &lt;- c(&quot;Total Wins&quot;=169)
-oh &lt;- c(&quot;Total Wins&quot;=134)
-cl &lt;- c(&quot;Total Wins&quot;=152)
-ou &lt;- c(&quot;Total Wins&quot;=149)
-ls &lt;- c(&quot;Total Wins&quot;=137)</code></pre>
-<pre class="r"><code>iron(
- waffle(al, 
-        rows = 10, 
-        title=&quot;Alabama&#39;s Total Wins&quot;, 
-        xlab=&quot;1 square = 1 Total Win&quot;, 
-        colors = c(&quot;red&quot;)
-        ),
- waffle(oh, 
-        rows = 10, 
-        title=&quot;Ohio State&#39;s Total Wins&quot;, 
-        xlab=&quot;1 square = 1 Total Win&quot;, 
-        colors = c(&quot;grey&quot;)
-        ),
-  waffle(cl, 
-        rows = 10, 
-        title=&quot;Clemson&#39;s Total Wins&quot;, 
-        xlab=&quot;1 square = 1 Total Win&quot;, 
-        colors = c(&quot;orange&quot;)
-        ),
-  waffle(ou, 
-        rows = 10, 
-        title=&quot;Oklahoma&#39;s Total Wins&quot;, 
-        xlab=&quot;1 square = 1 Total Win&quot;, 
-        colors = c(&quot;maroon&quot;)
-        ),
-   waffle(ls, 
-        rows = 10, 
-        title=&quot;LSU&#39;s Total Wins&quot;, 
-        xlab=&quot;1 square = 1 Total Win&quot;, 
-        colors = c(&quot;purple&quot;)
-        )
-)</code></pre>
 <p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<pre class="r"><code>al &lt;- c(&quot;Conference Titles&quot;=7, &quot;National Championships&quot;=6)
-oh &lt;- c(&quot;Conference Titles&quot;=8, &quot;National Championships&quot;=1)
-cl &lt;- c(&quot;Conference Titles&quot;=7, &quot;National Championships&quot;=2)
-ou &lt;- c(&quot;Conference Titles&quot;=7, &quot;National Championships&quot;=0)
-ls &lt;- c(&quot;Conference Titles&quot;=3, &quot;National Championships&quot;=2)</code></pre>
-<pre class="r"><code>iron(
- waffle(al, 
-        rows = 10, 
-        title=&quot;Alabama&#39;s Achievements&quot;, 
-        xlab=&quot;1 square = 1 Title/Championship&quot;, 
-        colors = c(&quot;red&quot;, &quot;grey&quot;)
-        ),
- waffle(oh, 
-        rows = 10, 
-        title=&quot;Ohio State&#39;s Achievements&quot;, 
-        xlab=&quot;1 square = 1 Title/Championship&quot;, 
-        colors = c(&quot;grey&quot;, &quot;red&quot;)
-        ),
-  waffle(cl, 
-        rows = 10, 
-        title=&quot;Clemson&#39;s Achievements&quot;, 
-        xlab=&quot;1 square = 1 Title/Championship&quot;, 
-        colors = c(&quot;orange&quot;, &quot;purple&quot;)
-        ),
-  waffle(ou, 
-        rows = 10, 
-        title=&quot;Oklahoma&#39;s Achievements&quot;, 
-        xlab=&quot;1 square = 1 Title/Championship&quot;, 
-        colors = c(&quot;maroon&quot;, &quot;black&quot;)
-        ),
-   waffle(ls, 
-        rows = 10, 
-        title=&quot;LSU&#39;s Achievements&quot;, 
-        xlab=&quot;1 square = 1 Title/Championship&quot;, 
-        colors = c(&quot;yellow&quot;, &quot;purple&quot;)
-        )
-)</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre class="r"><code>elite &lt;- read_csv(&quot;data/elitecfbteams.csv&quot;)</code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   Team = col_character(),
+##   `Total Wins` = col_double(),
+##   `Conference Titles` = col_double(),
+##   `National Championships` = col_double(),
+##   `Heisman Trophy Finalists` = col_double()
+## )</code></pre>
+<pre class="r"><code>glimpse(elite)</code></pre>
+<pre><code>## Rows: 5
+## Columns: 5
+## $ Team                       &lt;chr&gt; &quot;Alabama&quot;, &quot;Clemson&quot;, &quot;Ohio State&quot;, &quot;Okl...
+## $ `Total Wins`               &lt;dbl&gt; 169, 152, 134, 149, 137
+## $ `Conference Titles`        &lt;dbl&gt; 7, 7, 8, 7, 3
+## $ `National Championships`   &lt;dbl&gt; 6, 2, 1, 0, 2
+## $ `Heisman Trophy Finalists` &lt;dbl&gt; 8, 3, 3, 6, 2</code></pre>
+<pre class="r"><code>names(elite)</code></pre>
+<pre><code>## [1] &quot;Team&quot;                     &quot;Total Wins&quot;              
+## [3] &quot;Conference Titles&quot;        &quot;National Championships&quot;  
+## [5] &quot;Heisman Trophy Finalists&quot;</code></pre>
+<pre class="r"><code>ggplot() + 
+  geom_bar(data=elite, aes(x=reorder(Team, - `Total Wins`), weight=`Total Wins`)) + 
+  scale_y_continuous(labels=comma, expand = c(0,0)) + 
+  labs(
+    title=&quot;Elite College Football Teams With Most Wins Since 2007&quot;, 
+    x=&quot;School&quot;, 
+    y=&quot;Total Wins&quot;) +
+  theme_minimal()</code></pre>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<pre class="r"><code>ggplot() + 
+  geom_bar(data=elite, aes(x=reorder(Team, - `National Championships`), weight=`National Championships`)) + 
+  scale_y_continuous(labels=comma, expand = c(0,0)) + 
+  labs(
+    title=&quot;College Football Teams With Most National Championships Since 2007&quot;, 
+    x=&quot;School&quot;, 
+    y=&quot;Total Wins&quot;) +
+  theme_minimal()</code></pre>
+<p><img src="http://markojerkovic.github.io/2021/04/04/alabama-s-football-dominance/index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 
     </div>
   </article>
