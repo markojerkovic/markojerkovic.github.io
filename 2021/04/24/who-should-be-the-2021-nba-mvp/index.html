@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">4 min read</span>
+    <span class="article-duration">6 min read</span>
     
 
     <h1 class="article-title">Who Should Be the 2021 NBA MVP?</h1>
@@ -77,7 +77,7 @@
 
 <p>The race for the 2021 NBA MVP is one of the most contentious and complex in recent history with no clear frontrunners and a multitude of prospects. Doing some data analysis and tough decision making I’ll come to a conclusion and maybe you will come to the same one.</p>
 <p>Let’s get started by deciding our shortlist of players we’ll be looking at. This is where things can start to get contentious. It is my belief that the best ability is availability, so I have decided to only include players that have played in 75% of their teams’ games this season.</p>
-<p>This rules out a number of high profile players, such as Lakers duo LeBron James and Anthony, Nets trio Kevin Durant, James Harden and Kyrie Irving, as well as Sixers star Joel Embiid.</p>
+<p>This rules out a number of high profile players, such as Lakers duo LeBron James and Anthony Davis, Nets trio Kevin Durant, James Harden and Kyrie Irving, as well as Sixers star Joel Embiid.</p>
 <p>This means our shortlist of players consists of the following; Giannis Antetokoumpo, Steph Curry, Luka Doncic, Nikola Jokic and Damian Lillard.</p>
 <p>We will be using some more in depth statistics that I’ll briefly summarize. First is Player Efficiency Rating or PER, which is an all-in-one rating system which attempts to boil down a player’s on-court contributions and statistics into one number.</p>
 <p>We will also use True Shooting Percentage or TS%, which is an aggregate percentage that takes into account field goals, 3-point field goals and free throws.</p>
@@ -146,6 +146,7 @@ library(scales)</code></pre>
     data=mvp, 
     aes(x=PER, y=`TS%`, size=`GP%`)
     ) +
+  scale_size(range = c(4,12)) +
   geom_point(
     data=curry,
     aes(x=PER, y=`TS%`, size=`GP%`), color=&quot;yellow&quot;
@@ -174,6 +175,27 @@ labs(title=&quot;Jokic dominates PER, while Curry leads True Shooting %&quot;, s
     panel.grid.minor = element_blank()
     )</code></pre>
 <p><img src="http://markojerkovic.github.io/2021/04/24/who-should-be-the-2021-nba-mvp/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>As we can see, Jokic and Curry are clearly ahead of the field. Curry, with this TS% of 66 would be in the top 50 all time in TS% in a season. While the even more impressive stat is Jokic’s 31.13 PER, which would be 12th all-time in a season. Behind four Michael Jordan seasons, three Wilt Chamberlain seasons, two Steph Curry and LeBron James seasons and one Giannis Antetokoumpo season.</p>
+<p>This shows us that despite a number of frontrunners, it truly is just a two horse race for the MVP between Curry and Jokic. Considering this, we’ll take a deep dive and compare some stats between the two, first start with some basic stats; points, assists and rebounds.</p>
+<pre class="r"><code>curry &lt;- c(&quot;Points&quot;=31, &quot;Assists&quot;=5, &quot;Rebounds&quot;=4, 8)
+jokic &lt;- c(&quot;Points&quot;=27, &quot;Assists&quot;=10, &quot;Rebounds&quot;=11)</code></pre>
+<pre class="r"><code>iron(
+ waffle(curry, 
+        rows = 4, 
+        title=&quot;Curry&#39;s Individual Production&quot;, 
+        xlab=&quot;1 square = 1 Point/Assist/Rebound Per Game&quot;, 
+        colors = c(&quot;gold&quot;, &quot;royal blue&quot;, &quot;black&quot;, &quot;white&quot;)
+        ),
+ waffle(jokic, 
+        rows = 4, 
+        title=&quot;Jokic&#39;s Individual Production&quot;, 
+        xlab=&quot;1 square = 1 Point/Assist/Rebound Per Game&quot;, 
+        colors = c(&quot;dark blue&quot;, &quot;yellow&quot;, &quot;dark red&quot;)
+        )
+)</code></pre>
+<p><img src="http://markojerkovic.github.io/2021/04/24/who-should-be-the-2021-nba-mvp/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>As we can see, Curry has a slight edge over Jokic when it comes to points per game, however Jokic more than has more than double the assists and rebounds per game than Curry has.</p>
+<p>To illustrate how Jokic is even more dominant over Curry, let’s look at some accumulation stats, where Jokic blows Curry out of the water. Let’s look at total double doubles, triple doubles and Western Conference Player of the Week awards.</p>
 <pre class="r"><code>curry &lt;- c(&quot;Western Conference Player of the Week&quot;=2, &quot;Double Doubles&quot;=8, &quot;Triple Doubles&quot;=0, 60)
 jokic &lt;- c(&quot;Western Conference Player of the Week&quot;=3, &quot;Double Doubles&quot;=52, &quot;Triple Doubles&quot;=15)</code></pre>
 <pre class="r"><code>iron(
@@ -190,7 +212,10 @@ jokic &lt;- c(&quot;Western Conference Player of the Week&quot;=3, &quot;Double 
         colors = c(&quot;dark blue&quot;, &quot;yellow&quot;, &quot;dark red&quot;)
         )
 )</code></pre>
-<p><img src="http://markojerkovic.github.io/2021/04/24/who-should-be-the-2021-nba-mvp/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="http://markojerkovic.github.io/2021/04/24/who-should-be-the-2021-nba-mvp/index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Once again it’s stunning to see how even in the company of another great player Jokic’s 2021 season stats tower over them. Jokic may not be a flashy player, on a historic franchise, or in a big market, but he should be the consensus MVP for 2021.</p>
+<p>He has amazing statistics that overmatch even the toughest competition, a well above average TS% and he has an all-time great PER that rivals numbers put up by Jordan and Chamberlain. What’s not to like?</p>
+<p>If any MVP voters don’t cast a ballot for Jokic, they clearly haven’t looked at the numbers, because Jokic is far and away the MVP for the 2021 NBA season.</p>
 
     </div>
   </article>
