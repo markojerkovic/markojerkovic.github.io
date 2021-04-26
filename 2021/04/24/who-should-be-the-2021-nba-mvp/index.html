@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Who Should Be the 2021 NBA MVP? - Marko Jerkovic&#39;s Gitbub Site</title>
+<meta property="og:title" content="Who Should Be the 2021 NBA MVP? - Marko Jerkovic&#39;s Gitbub Site">
+
+
+  <link href='http://markojerkovic.github.io/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/markojerkovic">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/markojerkovic8">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">4 min read</span>
+    
+
+    <h1 class="article-title">Who Should Be the 2021 NBA MVP?</h1>
+
+    
+    <span class="article-date">2021-04-24</span>
+    
+
+    <div class="article-content">
+      
+
+
+<p>The race for the 2021 NBA MVP is one of the most contentious and complex in recent history with no clear frontrunners and a multitude of prospects. Doing some data analysis and tough decision making I’ll come to a conclusion and maybe you will come to the same one.</p>
+<p>Let’s get started by deciding our shortlist of players we’ll be looking at. This is where things can start to get contentious. It is my belief that the best ability is availability, so I have decided to only include players that have played in 75% of their teams’ games this season.</p>
+<p>This rules out a number of high profile players, such as Lakers duo LeBron James and Anthony, Nets trio Kevin Durant, James Harden and Kyrie Irving, as well as Sixers star Joel Embiid.</p>
+<p>This means our shortlist of players consists of the following; Giannis Antetokoumpo, Steph Curry, Luka Doncic, Nikola Jokic and Damian Lillard.</p>
+<p>We will be using some more in depth statistics that I’ll briefly summarize. First is Player Efficiency Rating or PER, which is an all-in-one rating system which attempts to boil down a player’s on-court contributions and statistics into one number.</p>
+<p>We will also use True Shooting Percentage or TS%, which is an aggregate percentage that takes into account field goals, 3-point field goals and free throws.</p>
+<p>With that out of the way, let’s take a look at how consistently available our shortlist of five players was throughout the 2021 season.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## v ggplot2 3.3.3     v purrr   0.3.4
+## v tibble  3.0.5     v dplyr   1.0.3
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(waffle)
+library(ggplot2)
+library(scales)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<pre class="r"><code>mvp &lt;- read_csv(&quot;data/mvpcandidatestats.csv&quot;)</code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   Player = col_character(),
+##   `GP%` = col_double(),
+##   PPG = col_double(),
+##   RPG = col_double(),
+##   APG = col_double(),
+##   `FG%` = col_double(),
+##   `3P%` = col_double(),
+##   PER = col_double(),
+##   `TS%` = col_double()
+## )</code></pre>
+<pre class="r"><code>names(mvp)</code></pre>
+<pre><code>## [1] &quot;Player&quot; &quot;GP%&quot;    &quot;PPG&quot;    &quot;RPG&quot;    &quot;APG&quot;    &quot;FG%&quot;    &quot;3P%&quot;    &quot;PER&quot;   
+## [9] &quot;TS%&quot;</code></pre>
+<pre class="r"><code>ggplot() + 
+  geom_bar(data=mvp, aes(x=reorder(Player, - `GP%`), weight=`GP%`)) + 
+  scale_y_continuous(labels=comma, expand = c(0,10)) + 
+  labs(
+    title=&quot;Availability is the best ability&quot;, subtitle=&quot;Jokic has appeared in 100% of games, while everyone else is still above 85%&quot;,
+    x=&quot;MVP Candidate&quot;, 
+    y=&quot;Games Played Percentage&quot;,
+    caption=&quot;Source: NBA | By Marko Jerkovic&quot;) +
+  theme_minimal()</code></pre>
+<p><img src="http://markojerkovic.github.io/2021/04/24/who-should-be-the-2021-nba-mvp/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>As we can see, Jokic led the way, playing in 100% of the Denver Nuggets’ games so far this season. Lillard and Doncic have appeared in more 90% of their teams’ games, while Antetokoumpo and Curry have appeared in more than 85% of their teams’ games.</p>
+<p>With this new games played percentage we can now add two more advanced metrics into analysis to get a more thorough picture of these players’ dominance even amongst each other. The other two advanced metrics we’ll use are the two we discussed earlier, PER and TS%.</p>
+<pre class="r"><code>curry &lt;- mvp %&gt;%
+  filter(Player == &quot;Steph Curry&quot;)</code></pre>
+<pre class="r"><code>antetokoumpo &lt;- mvp %&gt;%
+  filter(Player == &quot;Giannis Antetokoumpo&quot;)</code></pre>
+<pre class="r"><code>doncic &lt;- mvp %&gt;%
+  filter(Player == &quot;Luka Doncic&quot;)</code></pre>
+<pre class="r"><code>jokic &lt;- mvp %&gt;%
+  filter(Player == &quot;Nikola Jokic&quot;)</code></pre>
+<pre class="r"><code>lillard &lt;- mvp %&gt;%
+  filter(Player == &quot;Damian Lillard&quot;)</code></pre>
+<pre class="r"><code>ggplot() + 
+  geom_point(
+    data=mvp, 
+    aes(x=PER, y=`TS%`, size=`GP%`)
+    ) +
+  geom_point(
+    data=curry,
+    aes(x=PER, y=`TS%`, size=`GP%`), color=&quot;yellow&quot;
+  ) +
+  geom_point(
+    data=antetokoumpo,
+    aes(x=PER, y=`TS%`, size=`GP%`), color=&quot;green&quot;
+  ) +
+  geom_point(
+    data=doncic,
+    aes(x=PER, y=`TS%`, size=`GP%`), color=&quot;light blue&quot;
+  ) +
+  geom_point(
+    data=jokic,
+    aes(x=PER, y=`TS%`, size=`GP%`), color=&quot;dark blue&quot;
+  ) +
+  geom_point(
+    data=lillard,
+    aes(x=PER, y=`TS%`, size=`GP%`), color=&quot;red&quot;
+  ) +
+labs(title=&quot;Jokic dominates PER, while Curry leads True Shooting %&quot;, subtitle=&quot;Even among the most elite competition, the greatest are able to create separation from the pack&quot;, caption=&quot;Source: NBA | By Marko Jerkovic&quot;)  + theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 16, face = &quot;bold&quot;),
+    axis.title = element_text(size = 8), 
+    plot.subtitle = element_text(size=10), 
+    panel.grid.minor = element_blank()
+    )</code></pre>
+<p><img src="http://markojerkovic.github.io/2021/04/24/who-should-be-the-2021-nba-mvp/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>curry &lt;- c(&quot;Western Conference Player of the Week&quot;=2, &quot;Double Doubles&quot;=8, &quot;Triple Doubles&quot;=0, 60)
+jokic &lt;- c(&quot;Western Conference Player of the Week&quot;=3, &quot;Double Doubles&quot;=52, &quot;Triple Doubles&quot;=15)</code></pre>
+<pre class="r"><code>iron(
+ waffle(curry, 
+        rows = 5, 
+        title=&quot;Curry&#39;s Individual Production&quot;, 
+        xlab=&quot;1 square = 1 Accomplishment&quot;, 
+        colors = c(&quot;gold&quot;, &quot;royal blue&quot;, &quot;black&quot;, &quot;white&quot;)
+        ),
+ waffle(jokic, 
+        rows = 5, 
+        title=&quot;Jokic&#39;s Individual Production&quot;, 
+        xlab=&quot;1 square = 1 Accomplishment&quot;, 
+        colors = c(&quot;dark blue&quot;, &quot;yellow&quot;, &quot;dark red&quot;)
+        )
+)</code></pre>
+<p><img src="http://markojerkovic.github.io/2021/04/24/who-should-be-the-2021-nba-mvp/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
